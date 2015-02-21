@@ -1,8 +1,9 @@
 package com.wendiesel.myapplication.fragment;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,14 @@ import com.wendiesel.myapplication.R;
 public class ListCareerPathFragment extends Fragment {
 
     private OnListCareerPathListener mListener;
-
-    public static ListCareerPathFragment newInstance() {
-        return new ListCareerPathFragment();
-    }
+    private RecyclerView mRecyclerView;
 
     public ListCareerPathFragment() {
         // Required empty public constructor
+    }
+
+    public static ListCareerPathFragment newInstance() {
+        return new ListCareerPathFragment();
     }
 
     @Override
@@ -30,7 +32,9 @@ public class ListCareerPathFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_career_path, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_career_path, container, false);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_list_career_paths);
+        return view;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class ListCareerPathFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
     public interface OnListCareerPathListener {
     }
-
 }
