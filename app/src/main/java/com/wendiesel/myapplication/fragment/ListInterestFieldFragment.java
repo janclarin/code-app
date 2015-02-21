@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,10 @@ import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.activity.CareerPathDetailActivity;
 import com.wendiesel.myapplication.data.TuitionData;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class ListCareerPathFragment extends Fragment {
+public class ListInterestFieldFragment extends Fragment {
 
     public static final String KEY_INTEREST_FIELD = "key_interest_field";
     private OnListCareerPathListener mListener;
@@ -30,19 +28,19 @@ public class ListCareerPathFragment extends Fragment {
     private TuitionData mTuitionData;
     private TreeSet<String> mInterestFields;
 
-    public ListCareerPathFragment() {
+    public ListInterestFieldFragment() {
         // Required empty public constructor
     }
 
-    public static ListCareerPathFragment newInstance() {
-        return new ListCareerPathFragment();
+    public static ListInterestFieldFragment newInstance() {
+        return new ListInterestFieldFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TuitionData mTuitionData = new TuitionData(getActivity().getApplicationContext());
+        mTuitionData = new TuitionData(getActivity().getApplicationContext());
         mInterestFields = (TreeSet<String>) mTuitionData.getFieldOfInterests();
     }
 
@@ -76,7 +74,12 @@ public class ListCareerPathFragment extends Fragment {
         mListener = null;
     }
 
+    public interface OnListCareerPathListener {
+    }
+
     private class InterestFieldHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private static final String mAverageTuitionText = "Average annual tuition fee: $";
 
         /**
          * Views for each compliment.
@@ -102,10 +105,10 @@ public class ListCareerPathFragment extends Fragment {
             mButtonStar = (ImageButton) itemView.findViewById(R.id.btn_star);
         }
 
-        public void bindInterestField(String name, Integer tuition) {
+        public void bindInterestField(String name, int tuition) {
             mInterestName = name;
             mTextInterestField.setText(name);
-            mTextAverageTuition.setText(tuition.toString());
+            mTextAverageTuition.setText(mAverageTuitionText + tuition);
         }
 
         @Override
@@ -127,11 +130,9 @@ public class ListCareerPathFragment extends Fragment {
         @Override
         public void onBindViewHolder(InterestFieldHolder holder, int position) {
             Iterator<String> iterator = mInterestFields.iterator();
-            for (int i = 0; i < position - 1; i++) iterator.next();
+            for (int i = 0; i < position; i++) iterator.next();
             String interestField = iterator.next();
-            Log.i("CODE", interestField);
-//            int tuition = mTuitionData.getAverageTuition(interestField, "Alberta");
-            int tuition = 0;
+            int tuition = mTuitionData.getAverageTuition(interestField, null);
             holder.bindInterestField(interestField, tuition);
         }
 
@@ -139,8 +140,5 @@ public class ListCareerPathFragment extends Fragment {
         public int getItemCount() {
             return mInterestFields.size();
         }
-    }
-
-    public interface OnListCareerPathListener {
     }
 }
