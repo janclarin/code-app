@@ -14,6 +14,7 @@
         android:layout_height="fill_parent">
 
         <TextView
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:text="@string/bar_chart"
             android:layout_height="wrap_content" />

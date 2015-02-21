@@ -1,14 +1,17 @@
 package com.wendiesel.myapplication.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.wendiesel.myapplication.data.*;
 
 import com.wendiesel.myapplication.R;
+import com.wendiesel.myapplication.fragment.ListCareerPathFragment;
 
 import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.charts.PieChart;
@@ -19,14 +22,23 @@ public class CareerPathDetailActivity extends ActionBarActivity {
 
 
     TuitionData mTuitionData;
+    String mFieldOfInterest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent i = getIntent();
+        mFieldOfInterest= i.getStringExtra(ListCareerPathFragment.KEY_INTEREST_FIELD);
+
+
+
         mTuitionData = new TuitionData(this);
         setContentView(R.layout.activity_career_path_detail);
 
+
+        TextView textView = (TextView) findViewById(R.id.text);
+        textView.setText(mFieldOfInterest);
 
         BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
 
