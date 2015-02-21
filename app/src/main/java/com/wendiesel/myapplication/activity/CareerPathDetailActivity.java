@@ -43,7 +43,10 @@ public class CareerPathDetailActivity extends ActionBarActivity {
         BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
         String[] provinces=(String[])GeneralData.getProvinces().toArray();
 
+
+
         TypedArray colorPalette = getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
+        mBarChart.addBar(new BarModel("CAN",mTuitionData.getAverageTuition(mFieldOfInterest, null),0xffd50000));
         for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
             int val = mTuitionData.getAverageTuition(mFieldOfInterest, provinces[n]);
             //   int val = mTuitionData.getAverageTuition(mFieldOfInterest,null);
