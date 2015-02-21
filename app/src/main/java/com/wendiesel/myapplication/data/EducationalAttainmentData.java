@@ -54,7 +54,7 @@ public class EducationalAttainmentData {
             if (age == 0) return ep.getJSONArray("Overall").getInt(idx);
             else if (age <= 24) return ep.getJSONArray("15 to 24 years").getInt(idx);
             else if (age <= 44) return ep.getJSONArray("25 to 44 years").getInt(idx);
-            else return ep.getJSONArray("45 and over").getInt(0);
+            else return ep.getJSONArray("45 and over").getInt(idx);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
