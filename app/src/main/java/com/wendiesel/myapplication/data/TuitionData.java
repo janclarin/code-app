@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.TreeSet;
 
 public class TuitionData {
-    private JSONArray data;
     private TreeSet<String> fieldOfInterests = new TreeSet<>();
     private HashMap<String, Integer> tuition = new HashMap<>();
 
@@ -22,7 +21,7 @@ public class TuitionData {
      * @param ctx Context
      */
     public TuitionData(Context ctx) {
-        data = JsonDataReader.readArray(ctx, R.raw.averagetuition);
+        JSONArray data = JsonDataReader.readArray(ctx, R.raw.averagetuition);
         for (int i = 0; i < data.length(); i++) {
             try {
                 JSONObject e = data.getJSONObject(i);
