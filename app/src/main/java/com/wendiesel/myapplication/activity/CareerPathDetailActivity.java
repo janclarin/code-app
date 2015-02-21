@@ -1,10 +1,10 @@
 package com.wendiesel.myapplication.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -19,10 +19,6 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.BarModel;
 import org.eazegraph.lib.models.PieModel;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
 public class CareerPathDetailActivity extends ActionBarActivity {
 
 
@@ -34,29 +30,25 @@ public class CareerPathDetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
-        mFieldOfInterest= i.getStringExtra(ListInterestFieldFragment.KEY_INTEREST_FIELD);
-
+        mFieldOfInterest = i.getStringExtra(ListInterestFieldFragment.KEY_INTEREST_FIELD);
 
 
         mTuitionData = new TuitionData(this);
-        setContentView(R.layout.activity_career_path_detail);
+        setContentView(R.layout.activity_interest_field_detail);
 
 
         TextView textView = (TextView) findViewById(R.id.text);
         textView.setText(mFieldOfInterest);
 
         BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
+        String[] provinces=(String[])GeneralData.getProvinces().toArray();
 
-        for(String s:(String[])GeneralData.getProvinces().toArray()){
-            Log.i("CareerPath", s);
-        }
-        for(String s:GeneralData.abbrev_provinces){
-            Log.i("CareerPath", s);
-        }
+        TypedArray colorPalette = getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
+        for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
+            int val = mTuitionData.getAverageTuition(mFieldOfInterest, provinces[n]);
+            //   int val = mTuitionData.getAverageTuition(mFieldOfInterest,null);
 
-        for (int n=0;n<GeneralData.abbrev_provinces.length; n++) {
-            int val = mTuitionData.getAverageTuition(mFieldOfInterest,(String)GeneralData.getProvinces().toArray()[n]);
-            mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, 0xFF123456));
+            mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
         }
 
         mBarChart.startAnimation();

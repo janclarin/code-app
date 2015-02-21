@@ -4,4 +4,32 @@
     <color name="theme_primaryDark">#303f9f</color>
     <color name="theme_primaryLight">#c5cae9</color>
     <color name="theme_accent">#ff5252</color>
+
+
+        <item name="blue" type="color">#29B6F6</item>
+        <item name="green" type="color">#66BB6A</item>
+        <item name="yellow" type="color">#FFEE58</item>
+        <item name="red" type="color">#ef5350</item>
+        <item name="orange" type="color">#FFA726</item>
+        <item name="pink" type="color">#EC407A</item>
+        <item name="purple" type="color">#AB47BC</item>
+        <item name="grey" type="color">#BDBDBD</item>
+        <item name="blue_grey" type="color">#78909C</item>
+        <item name="amber" type="color">#FFCA28</item>
+
+
+
+    <array name="province_color">
+            <item >@color/blue</item>
+            <item >@color/green</item>
+            <item >@color/yellow</item>
+            <item >@color/red</item>
+            <item >@color/orange</item>
+            <item >@color/pink</item>
+            <item >@color/purple</item>
+            <item >@color/grey</item>
+            <item >@color/amber</item>
+            <item >@color/blue_grey</item>
+
+        </array>
 </resources>
