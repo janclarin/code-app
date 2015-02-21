@@ -42,7 +42,8 @@ public class TuitionData {
      */
     public int getAverageTuition(String fieldOfInterest, String province) {
         if (province == null) province = "Canada";
-        return tuition.get(fieldOfInterest + province);
+        Integer cost = tuition.get(fieldOfInterest + province);
+        return (cost == null) ? 0 : cost;
     }
 
     /**
