@@ -1,9 +1,11 @@
-package com.wendiesel.myapplication;
+package com.wendiesel.myapplication.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.wendiesel.myapplication.R;
 
 
 public class MainActivity extends ActionBarActivity {
