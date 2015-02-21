@@ -17,6 +17,10 @@ public class TuitionData {
     private TreeSet<String> fieldOfInterests = new TreeSet<>();
     private HashMap<String, Integer> tuition = new HashMap<>();
 
+    /**
+     * Creates new TuitionData object
+     * @param ctx Context
+     */
     public TuitionData(Context ctx) {
         data = JsonDataReader.readArray(ctx, R.raw.averagetuition);
         for (int i = 0; i < data.length(); i++) {
@@ -31,10 +35,21 @@ public class TuitionData {
         }
     }
 
+    /**
+     * Gets average tuition for a field of interest and province
+     * @param fieldOfInterest Field of interest
+     * @param province Province (or null for entire Canada)
+     * @return Average tuition, in dollars
+     */
     public int getAverageTuition(String fieldOfInterest, String province) {
+        if (province == null) province = "Canada";
         return tuition.get(fieldOfInterest + province);
     }
 
+    /**
+     * Gets a list of field of interests, sorted alphabetically
+     * @return List of field of interests
+     */
     public Collection<String> getFieldOfInterests() {
         return fieldOfInterests;
     }
