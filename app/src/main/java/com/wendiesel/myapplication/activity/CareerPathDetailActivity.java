@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -11,12 +12,16 @@ import android.widget.TextView;
 import com.wendiesel.myapplication.data.*;
 
 import com.wendiesel.myapplication.R;
-import com.wendiesel.myapplication.fragment.ListCareerPathFragment;
+import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 
 import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.BarModel;
 import org.eazegraph.lib.models.PieModel;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class CareerPathDetailActivity extends ActionBarActivity {
 
@@ -29,7 +34,7 @@ public class CareerPathDetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
-        mFieldOfInterest= i.getStringExtra(ListCareerPathFragment.KEY_INTEREST_FIELD);
+        mFieldOfInterest= i.getStringExtra(ListInterestFieldFragment.KEY_INTEREST_FIELD);
 
 
 
@@ -42,9 +47,18 @@ public class CareerPathDetailActivity extends ActionBarActivity {
 
         BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
 
-        for (String s : mTuitionData.getFieldOfInterests()) {
-            mBarChart.addBar(new BarModel(s, 2.3f, 0xFF123456));
+        for(String s:(String[])GeneralData.getProvinces().toArray()){
+            Log.i("CareerPath", s);
         }
+        for(String s:GeneralData.abbrev_provinces){
+            Log.i("CareerPath", s);
+        }
+
+        for (int n=0;n<GeneralData.abbrev_provinces.length; n++) {
+            int val = mTuitionData.getAverageTuition(mFieldOfInterest,(String)GeneralData.getProvinces().toArray()[n]);
+            mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, 0xFF123456));
+        }
+
         mBarChart.startAnimation();
 
         PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
