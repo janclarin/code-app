@@ -2,18 +2,33 @@ package com.wendiesel.myapplication.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.wendiesel.myapplication.R;
+import com.wendiesel.myapplication.activity.CareerPathDetailActivity;
+import com.wendiesel.myapplication.data.TuitionData;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 public class ListCareerPathFragment extends Fragment {
 
+    public static final String KEY_INTEREST_FIELD = "key_interest_field";
     private OnListCareerPathListener mListener;
     private RecyclerView mRecyclerView;
+
+    private TuitionData mTuitionData;
+    private TreeSet<String> mInterestFields;
 
     public ListCareerPathFragment() {
         // Required empty public constructor
@@ -26,6 +41,9 @@ public class ListCareerPathFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        TuitionData mTuitionData = new TuitionData(getActivity().getApplicationContext());
+        mInterestFields = (TreeSet<String>) mTuitionData.getFieldOfInterests();
     }
 
     @Override
@@ -34,6 +52,10 @@ public class ListCareerPathFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_career_path, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_list_career_paths);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(new InterestFieldAdapter());
+
         return view;
     }
 
@@ -52,6 +74,71 @@ public class ListCareerPathFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private class InterestFieldHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        /**
+         * Views for each compliment.
+         */
+        private TextView mTextInterestField;
+        private TextView mTextAverageTuition;
+        private ImageButton mButtonStar;
+
+        private String mInterestName;
+
+        /**
+         * Indicates whether or not the interest is starred.
+         */
+        private boolean isStarred;
+
+        public InterestFieldHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+
+            // Find the views.
+            mTextInterestField = (TextView) itemView.findViewById(R.id.tv_field_of_interest);
+            mTextAverageTuition = (TextView) itemView.findViewById(R.id.tv_average_tuition);
+            mButtonStar = (ImageButton) itemView.findViewById(R.id.btn_star);
+        }
+
+        public void bindInterestField(String name, Integer tuition) {
+            mInterestName = name;
+            mTextInterestField.setText(name);
+            mTextAverageTuition.setText(tuition.toString());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), CareerPathDetailActivity.class);
+            intent.putExtra(KEY_INTEREST_FIELD, mInterestName);
+            startActivity(intent);
+        }
+    }
+
+    private class InterestFieldAdapter extends RecyclerView.Adapter<InterestFieldHolder> {
+        @Override
+        public InterestFieldHolder onCreateViewHolder(ViewGroup parent, int position) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.list_item_interest_field, parent, false);
+            return new InterestFieldHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(InterestFieldHolder holder, int position) {
+            Iterator<String> iterator = mInterestFields.iterator();
+            for (int i = 0; i < position - 1; i++) iterator.next();
+            String interestField = iterator.next();
+            Log.i("CODE", interestField);
+//            int tuition = mTuitionData.getAverageTuition(interestField, "Alberta");
+            int tuition = 0;
+            holder.bindInterestField(interestField, tuition);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mInterestFields.size();
+        }
     }
 
     public interface OnListCareerPathListener {
