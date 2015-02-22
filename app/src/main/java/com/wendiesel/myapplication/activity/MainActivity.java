@@ -76,7 +76,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public class CustomPagerAdapter extends FragmentPagerAdapter {
-        private final String[] TITLES = {"Fields of Interest", "Employment Information"};
+        private final String[] TITLES = {"Employment Information", "Fields of Interest"};
 
         public CustomPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -96,9 +96,9 @@ public class MainActivity extends ActionBarActivity
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return ListInterestFieldFragment.newInstance();
-                case 1:
                     return EmploymentInfoFragment.newInstance();
+                case 1:
+                    return ListInterestFieldFragment.newInstance();
                 default:
                     return ListInterestFieldFragment.newInstance();
             }
