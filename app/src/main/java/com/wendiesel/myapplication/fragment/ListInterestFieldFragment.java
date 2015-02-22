@@ -3,7 +3,9 @@ package com.wendiesel.myapplication.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,10 +15,11 @@ import android.widget.TextView;
 
 import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.activity.InterestFieldDetailActivity;
+import com.wendiesel.myapplication.activity.YourInformationActivity;
 import com.wendiesel.myapplication.data.TuitionData;
 
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.TreeSet;
 
 public class ListInterestFieldFragment extends Fragment {
 
@@ -25,7 +28,7 @@ public class ListInterestFieldFragment extends Fragment {
     private RecyclerView mRecyclerView;
 
     private TuitionData mTuitionData;
-    private TreeSet<String> mInterestFields;
+    private Collection<String> mInterestFields;
 
     public ListInterestFieldFragment() {
         // Required empty public constructor
@@ -39,8 +42,14 @@ public class ListInterestFieldFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        int science = preferences.getInt(YourInformationActivity.KEY_PREF_SCIENCE, 2);
+        int math = preferences.getInt(YourInformationActivity.KEY_PREF_MATH, 2);
+        int english = preferences.getInt(YourInformationActivity.KEY_PREF_ENGLISH, 2);
+        int physed = preferences.getInt(YourInformationActivity.KEY_PREF_PHYSICAL_EDU, 2);
+        int history = preferences.getInt(YourInformationActivity.KEY_PREF_SOCIAL_STUDIES, 2);
         mTuitionData = new TuitionData(getActivity().getApplicationContext());
-        mInterestFields = (TreeSet<String>) mTuitionData.getFieldOfInterests();
+        mInterestFields = mTuitionData.getFieldOfInterests(math,science,english,history,physed);
     }
 
     @Override
