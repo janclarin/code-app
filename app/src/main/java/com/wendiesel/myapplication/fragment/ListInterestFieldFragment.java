@@ -2,7 +2,6 @@ package com.wendiesel.myapplication.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.wendiesel.myapplication.R;
-import com.wendiesel.myapplication.activity.InterestFieldDetailActivity;
 import com.wendiesel.myapplication.activity.YourInformationActivity;
 import com.wendiesel.myapplication.data.GeneralData;
 import com.wendiesel.myapplication.data.TuitionData;
@@ -28,7 +26,6 @@ import java.util.Iterator;
 
 public class ListInterestFieldFragment extends Fragment {
 
-    public static final String KEY_INTEREST_FIELD = "key_interest_field";
     private OnListCareerPathListener mListener;
     private RecyclerView mRecyclerView;
 
@@ -54,7 +51,7 @@ public class ListInterestFieldFragment extends Fragment {
         int physed = preferences.getInt(YourInformationActivity.KEY_PREF_PHYSICAL_EDU, 2);
         int history = preferences.getInt(YourInformationActivity.KEY_PREF_SOCIAL_STUDIES, 2);
         mTuitionData = new TuitionData(getActivity().getApplicationContext());
-        mInterestFields = mTuitionData.getFieldOfInterests(math,science,english,history,physed);
+        mInterestFields = mTuitionData.getFieldOfInterests(math, science, english, history, physed);
     }
 
     @Override
@@ -120,11 +117,11 @@ public class ListInterestFieldFragment extends Fragment {
         public void bindInterestField(String name, int tuition) {
             mInterestName = name;
             mTextInterestField.setText(name);
-            mTextAverageTuition.setText(mAverageTuitionText + tuition +"/yr");
+            mTextAverageTuition.setText(mAverageTuitionText + tuition + "/year");
             TuitionData data = new TuitionData(getActivity());
-            mAboutText.setText(data.getDescription(mInterestName).toString());
+            mAboutText.setText(data.getDescription(mInterestName));
             double avgSalaryPerHour = data.getAverageSalary(mInterestName, null);
-            String wageinfo = String.format("$%.2f/hr \nApprox. $%.0f/yr",avgSalaryPerHour,(avgSalaryPerHour*2080));
+            String wageinfo = String.format("$%.2f/hour \n$%.0f/year (approximate)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
             mAverageSalary.setText(wageinfo);
 
             String[] provinces = (String[]) GeneralData.getProvinces().toArray();
@@ -132,7 +129,7 @@ public class ListInterestFieldFragment extends Fragment {
 
             mBarChart.clearChart();
 
-           // mBarChart.addBar(new BarModel("CAN", mTuitionData.getAverageTuition(mInterestName, null), 0xffd50000));
+            //  mBarChart.addBar(new BarModel("CAN", mTuitionData.getAverageTuition(mInterestName, null), 0xffd50000));
             for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
                 int val = mTuitionData.getAverageTuition(mInterestName, provinces[n]);
                 mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
@@ -142,9 +139,6 @@ public class ListInterestFieldFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), InterestFieldDetailActivity.class);
-            intent.putExtra(KEY_INTEREST_FIELD, mInterestName);
-            startActivity(intent);
         }
     }
 
