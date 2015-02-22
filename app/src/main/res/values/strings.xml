@@ -25,6 +25,8 @@
     <string name="tv_subject_physical_education">Physical Education</string>
     <string name="title_activity_your_information">Your Information</string>
     <string name="action_done">Done</string>
-    <string name="tv_title_edu_level">Education Goal: </string>
-    <string name="odds_of_hired">Odds of Getting Hired</string>
+    <string name="tv_title_edu_level">Education goal</string>
+    <string name="odds_of_hired">Employment rate</string>
+    <string name="tv_description_employment_rate_1">Based on Statistics Canada, your age and education, you have a</string>
+    <string name="tv_description_employment_rate_2">higher chance of being employed if your level of education is</string>
 </resources>
