@@ -28,4 +28,10 @@
     <string name="tv_tuition_fees">Annual tuition fees by province</string>
     <string name="action_account">Account</string>
     <string name="action_sort">Sort</string>
+    <string name="action_sort_recommend">Recommendations</string>
+    <string name="action_sort_alpha">Alphabetical</string>
+    <string name="action_sort_tuition_asc">Tuition - Ascending</string>
+    <string name="action_sort_tuition_desc">Tuition - Descending</string>
+    <string name="action_sort_salary_asc">Salary - Ascending</string>
+    <string name="action_sort_salary_desc">Salary - Descending</string>
 </resources>
