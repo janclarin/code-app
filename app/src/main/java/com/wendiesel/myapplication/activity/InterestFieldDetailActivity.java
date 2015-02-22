@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
 import com.wendiesel.myapplication.data.*;
-
 import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 
@@ -63,14 +62,6 @@ public class InterestFieldDetailActivity extends ActionBarActivity {
 
             mBarChart.startAnimation();
 
-            PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
-
-            mPieChart.addPieSlice(new PieModel("Poop", 15, Color.parseColor("#FE6DA8")));
-            mPieChart.addPieSlice(new PieModel("Sleep", 25, Color.parseColor("#56B7F1")));
-            mPieChart.addPieSlice(new PieModel("Work", 35, Color.parseColor("#CDA67F")));
-            mPieChart.addPieSlice(new PieModel("Eating", 9, Color.parseColor("#FED70E")));
-
-            mPieChart.startAnimation();
     }
 
 

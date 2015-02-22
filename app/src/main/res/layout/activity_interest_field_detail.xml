@@ -29,14 +29,7 @@
             app:egFixedBarWidth="true"
             app:egLegendHeight="40dp" />
 
-        <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/piechart"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:padding="8dp"
-            app:egLegendTextSize="18sp"
-            app:egUsePieRotation="true"
-            app:egValueTextSize="36sp" />
+
     </LinearLayout>
 
 </LinearLayout>
