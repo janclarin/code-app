@@ -85,8 +85,6 @@ public class EmploymentInfoFragment extends Fragment {
                 String educationLevel = mSpinnerEduLevelDesired.getSelectedItem().toString();
                 //TODO 15 to 24 years placeholder
                 double odds = data.getEmploymentPercentage(educationLevel, "15 to 24 years", Gender.BOTH);
-                Toast.makeText(getActivity(), "%"+odds, Toast.LENGTH_SHORT).show();
-
                 futureBar.setValue((int)odds);
                 mBarChart.update();
 

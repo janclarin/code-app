@@ -128,6 +128,7 @@ public class YourInformationActivity extends ActionBarActivity {
             editor.putInt(KEY_PREF_PHYSICAL_EDU, mSeekPhysicalEdu.getProgress());
             editor.apply();
             Intent intent = new Intent(YourInformationActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
