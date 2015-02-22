@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -136,13 +137,25 @@ public class TuitionData {
         Arrays.sort(rankings);
         ArrayList<String> foiList = new ArrayList<>();
         HashSet<String> usedFoi = new HashSet<>();
+
+        int curRank = -1;
+        ArrayList<String> curList = new ArrayList<>();
         for (FoiRanking fr : rankings) {
+            if (curRank != fr.rank) {
+                curRank = fr.rank;
+                Collections.sort(curList);
+                foiList.addAll(curList);
+                curList.clear();
+            }
             for (String foi : subjectMapping[fr.idx]) {
                 if (usedFoi.contains(foi)) continue;
                 usedFoi.add(foi);
-                foiList.add(foi);
+                curList.add(foi);
             }
         }
+        Collections.sort(curList);
+        foiList.addAll(curList);
+        curList.clear();
         return foiList;
     }
 
@@ -171,6 +184,11 @@ public class TuitionData {
         return desc != null ? desc : "";
     }
 
+    /**
+     * Gets salary category for a field of interest
+     * @param fieldOfInterest Field of interest
+     * @return Salary category like "Health occupations"
+     */
     public String getSalaryCategory(String fieldOfInterest) {
         String category = salaryMapping.get(fieldOfInterest);
         return category != null ? category : "";
