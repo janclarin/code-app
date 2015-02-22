@@ -21,6 +21,7 @@ public class EducationalAttainmentData {
             "Postsecondary certificate or diploma",
             "Bachelor's degree",
             "Above bachelor's degree"};
+    private static final String[] ages = {"15 to 24 years", "25 to 44 years", "45 and over"};
     private JSONObject data;
 
     /**
@@ -30,11 +31,6 @@ public class EducationalAttainmentData {
      */
     public EducationalAttainmentData(Context ctx) {
         data = JsonDataReader.readObject(ctx, R.raw.educationalattainment);
-        Iterator<String> keys = data.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
-            if (key.equals("Total")) continue;
-        }
     }
 
     /**
@@ -47,24 +43,30 @@ public class EducationalAttainmentData {
     }
 
     /**
+     * Get a list of ages, like "15 to 24 years"
+     * @return List of ages
+     */
+    public Collection<String> getAges() {
+        return Arrays.asList(ages);
+    }
+
+    /**
      * Get employment percentage by education level and age
      *
      * @param educationLevel Education level, from getEducationLevels()
-     * @param age            Person's age, or 0 to get average for all ages
+     * @param age            Person's age group ("15 to 24 years" etc, or null for total)
      * @param gender         Gender (can be both)
      * @return Employment percentage (0-100%)
      */
-    public double getEmploymentPercentage(String educationLevel, int age, Gender gender) {
+    public double getEmploymentPercentage(String educationLevel, String age, Gender gender) {
+        if (age == null) age = "Total";
         try {
             int idx;
             if (gender == Gender.MALE) idx = 1;
             else if (gender == Gender.FEMALE) idx = 2;
             else idx = 0;
             JSONObject ep = data.getJSONObject(educationLevel);
-            if (age == 0) return ep.getJSONArray("Overall").getInt(idx);
-            else if (age <= 24) return ep.getJSONArray("15 to 24 years").getInt(idx);
-            else if (age <= 44) return ep.getJSONArray("25 to 44 years").getInt(idx);
-            else return ep.getJSONArray("45 and over").getInt(idx);
+            return ep.getJSONArray(age).getInt(idx);
         } catch (JSONException e) {
             return 0.0;
         }
