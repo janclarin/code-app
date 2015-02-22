@@ -21,6 +21,7 @@ public class EducationalAttainmentData {
             "Postsecondary certificate or diploma",
             "Bachelor's degree",
             "Above bachelor's degree"};
+    private static final String[] ages = {"15 to 24 years", "25 to 44 years", "45 and over"};
     private JSONObject data;
 
     /**
@@ -39,6 +40,14 @@ public class EducationalAttainmentData {
      */
     public Collection<String> getEducationLevels() {
         return Arrays.asList(educationLevels);
+    }
+
+    /**
+     * Get a list of ages, like "15 to 24 years"
+     * @return List of ages
+     */
+    public Collection<String> getAges() {
+        return Arrays.asList(ages);
     }
 
     /**
