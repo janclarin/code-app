@@ -38,10 +38,6 @@ public class EmploymentInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static EmploymentInfoFragment newInstance() {
-        return new EmploymentInfoFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,11 +101,10 @@ public class EmploymentInfoFragment extends Fragment {
         });
 
         // Set to last education level by default.
-        mSpinnerEduLevelDesired.setSelection(mEducationLevels.size() - 1);
+        mSpinnerEduLevelDesired.setSelection(mEducationLevels.size() - 2);
 
         return view;
     }
-
 
     @Override
     public void onAttach(Activity activity) {

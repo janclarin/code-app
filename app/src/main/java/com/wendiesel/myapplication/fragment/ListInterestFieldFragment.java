@@ -29,30 +29,21 @@ public class ListInterestFieldFragment extends Fragment {
 
     private OnListCareerPathListener mListener;
     private RecyclerView mRecyclerView;
+    private InterestFieldAdapter mAdapter;
 
     private TuitionData mTuitionData;
     private Collection<String> mInterestFields;
+    private Collection<String> mRecommendedInterestFields;
 
     public ListInterestFieldFragment() {
         // Required empty public constructor
     }
 
-    public static ListInterestFieldFragment newInstance() {
-        return new ListInterestFieldFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        int science = preferences.getInt(YourInformationActivity.KEY_PREF_SCIENCE, 2);
-        int math = preferences.getInt(YourInformationActivity.KEY_PREF_MATH, 2);
-        int english = preferences.getInt(YourInformationActivity.KEY_PREF_ENGLISH, 2);
-        int physed = preferences.getInt(YourInformationActivity.KEY_PREF_PHYSICAL_EDU, 2);
-        int history = preferences.getInt(YourInformationActivity.KEY_PREF_SOCIAL_STUDIES, 2);
-        mTuitionData = new TuitionData(getActivity().getApplicationContext());
-        mInterestFields = mTuitionData.getFieldOfInterests(math, science, english, history, physed);
+        // Sort by recommendation.
+        sortByRecommendation();
     }
 
     @Override
@@ -63,7 +54,8 @@ public class ListInterestFieldFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_list_career_paths);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(new InterestFieldAdapter());
+        mAdapter = new InterestFieldAdapter();
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
@@ -83,6 +75,39 @@ public class ListInterestFieldFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    /**
+     * Sorts by recommendation by default.
+     */
+    public void sortByRecommendation() {
+        if (mRecommendedInterestFields != null) {
+            mInterestFields = mRecommendedInterestFields;
+            mAdapter.notifyDataSetChanged();
+        } else {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            int science = preferences.getInt(YourInformationActivity.KEY_PREF_SCIENCE, 2);
+            int math = preferences.getInt(YourInformationActivity.KEY_PREF_MATH, 2);
+            int english = preferences.getInt(YourInformationActivity.KEY_PREF_ENGLISH, 2);
+            int physEd = preferences.getInt(YourInformationActivity.KEY_PREF_PHYSICAL_EDU, 2);
+            int history = preferences.getInt(YourInformationActivity.KEY_PREF_SOCIAL_STUDIES, 2);
+            mTuitionData = new TuitionData(getActivity().getApplicationContext());
+            mInterestFields = mRecommendedInterestFields = mTuitionData.getFieldOfInterests(math, science, english, history, physEd);
+        }
+    }
+
+    /**
+     * Sorts the career paths based on new sort order.
+     *
+     * @param sortOrder
+     */
+    public void sortBy(TuitionData.SortOrder sortOrder) {
+        if (sortOrder == null) {
+            sortByRecommendation();
+        } else {
+            mInterestFields = mTuitionData.getFieldOfInterests(sortOrder);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     public interface OnListCareerPathListener {
