@@ -12,7 +12,6 @@
     <string name="field_of_interest">Field of Interest</string>
     <string name="tv_title_desired_edu_level">Desired</string>
     <string name="tv_title_current_edu_level">Current</string>
-    <string name="tv_title_edu_level">Levels of Education</string>
     <string name="title_activity_get_information">GetInformationActivity</string>
     <string name="tv_title_age">Age group:</string>
     <string name="tv_title_current_level_edu">Current level of education:</string>
