@@ -12,7 +12,8 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/tv_title_edu_level"
         android:textColor="@color/primary_text_default_material_light"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:singleLine="false" />
 
     <Spinner
         android:id="@+id/spn_desired_edu_level"
@@ -30,5 +31,27 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:textSize="20sp" />
+
+    <org.eazegraph.lib.charts.BarChart
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/barchart"
+        android:layout_width="256dp"
+
+        android:layout_height="256dp"
+        android:padding="10dp"
+        app:egFixedBarWidth="true"
+        app:egBarWidth="30dp"
+        app:egLegendHeight="40dp"
+        android:layout_below="@+id/tv_age_group"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/odds_of_hired"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/tv_age_group"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
