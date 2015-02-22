@@ -81,6 +81,13 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="14sp" />
 
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:paddingRight="8dp" />
+
             <TextView
                 android:id="@+id/tv_average_salary"
                 android:layout_width="match_parent"
@@ -106,8 +113,8 @@
             <org.eazegraph.lib.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
                 app:egAnimationTime="0"
                 app:egBarWidth="12dp"
                 app:egEnableScroll="false"

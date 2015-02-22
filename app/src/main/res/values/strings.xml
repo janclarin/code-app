@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EduGoal</string>
+    <string name="app_name">Second Path</string>
 
     <string name="action_settings">Settings</string>
 
@@ -24,7 +24,7 @@
     <string name="tv_description_employment_rate_1">Based on Statistics Canada, your age and education, you have a</string>
     <string name="tv_description_employment_rate_2">higher chance of being employed if your level of education is</string>
     <string name="tv_about">About</string>
-    <string name="tv_average_salary">Average wage and salary in Canada</string>
+    <string name="tv_average_salary">Average wages in Canada</string>
     <string name="tv_tuition_fees">Annual tuition fees by province</string>
     <string name="action_account">Account</string>
     <string name="action_sort">Sort</string>
