@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wendiesel.myapplication.R;
@@ -99,6 +100,7 @@ public class ListInterestFieldFragment extends Fragment {
         private TextView mTextAverageTuition;
         private TextView mAboutText;
         private TextView mAverageSalary;
+        private ImageView mArrowIndicator;
         private BarChart mBarChart;
 
         private String mInterestName;
@@ -113,10 +115,13 @@ public class ListInterestFieldFragment extends Fragment {
             mTextAverageTuition = (TextView) itemView.findViewById(R.id.tv_average_tuition);
             mAboutText = (TextView) itemView.findViewById(R.id.tv_about);
             mAverageSalary = (TextView) itemView.findViewById(R.id.tv_average_salary);
+            mArrowIndicator = (ImageView) itemView.findViewById(R.id.iv_expansion_indicator);
             mBarChart = (BarChart) itemView.findViewById(R.id.barChart);
         }
 
         public void bindInterestField(String name, int tuition) {
+            hideInformation();
+
             mInterestName = name;
             double avgSalaryPerHour = mTuitionData.getAverageSalary(mInterestName, null);
             String wageInfo = String.format("$%.2f/hour \n$%.0f/year (approximate)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
@@ -130,7 +135,6 @@ public class ListInterestFieldFragment extends Fragment {
 
             mBarChart.clearChart();
 
-            //  mBarChart.addBar(new BarModel("CAN", mTuitionData.getAverageTuition(mInterestName, null), 0xffd50000));
             for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
                 int val = mTuitionData.getAverageTuition(mInterestName, provinces[n]);
                 mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
@@ -139,7 +143,29 @@ public class ListInterestFieldFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            mLayoutExpand.setVisibility(mLayoutExpand.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+            if (mLayoutExpand.getVisibility() == View.GONE) {
+                showInformation();
+            } else {
+                hideInformation();
+            }
+        }
+
+        /**
+         * Expands the inner layout to show more info.
+         */
+        private void showInformation() {
+            // Open layout.
+            mLayoutExpand.setVisibility(View.VISIBLE);
+            mArrowIndicator.setBackgroundResource(R.drawable.hide_indicator);
+        }
+
+        /**
+         * Hides the inner layout to show less info.
+         */
+        private void hideInformation() {
+            // Close the expansion every time.
+            mLayoutExpand.setVisibility(View.GONE);
+            mArrowIndicator.setBackgroundResource(R.drawable.show_indicator);
         }
     }
 
