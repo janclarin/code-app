@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -113,6 +114,66 @@ public class TuitionData {
      */
     public Collection<String> getFieldOfInterests() {
         return fieldOfInterests;
+    }
+
+    public enum SortOrder {
+        ALPHABETICAL,
+        TUITION_ASC,
+        TUITION_DSC,
+        SALARY_ASC,
+        SALARY_DSC
+    }
+
+    /**
+     * Gets a list of field of interests, with specific sort order
+     * @param sortOrder Sort order
+     * @return List of field of interests
+     */
+    public Collection<String> getFieldOfInterests(SortOrder sortOrder) {
+        Comparator<String> comp = null;
+        switch (sortOrder) {
+            case ALPHABETICAL:
+                return getFieldOfInterests();
+            case TUITION_ASC:
+                comp = new Comparator<String>() {
+                    @Override
+                    public int compare(String lhs, String rhs) {
+                        Integer a = getAverageTuition(lhs, null), b = getAverageTuition(rhs, null);
+                        return a.compareTo(b);
+                    }
+                };
+                break;
+            case TUITION_DSC:
+                comp = new Comparator<String>() {
+                    @Override
+                    public int compare(String lhs, String rhs) {
+                        Integer a = getAverageTuition(lhs, null), b = getAverageTuition(rhs, null);
+                        return -a.compareTo(b);
+                    }
+                };
+                break;
+            case SALARY_ASC:
+                comp = new Comparator<String>() {
+                    @Override
+                    public int compare(String lhs, String rhs) {
+                        Double a = getAverageSalary(lhs, null), b = getAverageSalary(rhs, null);
+                        return a.compareTo(b);
+                    }
+                };
+                break;
+            case SALARY_DSC:
+                comp = new Comparator<String>() {
+                    @Override
+                    public int compare(String lhs, String rhs) {
+                        Double a = getAverageSalary(lhs, null), b = getAverageSalary(rhs, null);
+                        return -a.compareTo(b);
+                    }
+                };
+                break;
+        }
+        ArrayList<String> foiList = new ArrayList<>(fieldOfInterests);
+        Collections.sort(foiList, comp);
+        return foiList;
     }
 
     /**
