@@ -9,7 +9,7 @@
     <string name="description_btn_star">Star button</string>
     <string name="bar_chart">Bar Chart</string>
     <string name="btn_change_age_group">Change</string>
-    <string name="field_of_interest">Field of Interest</string>
+    <string name="field_of_interest">Career Choice</string>
     <string name="tv_title_desired_edu_level">Desired</string>
     <string name="tv_title_current_edu_level">Current</string>
     <string name="title_activity_get_information">GetInformationActivity</string>

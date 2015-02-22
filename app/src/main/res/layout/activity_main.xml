@@ -8,6 +8,7 @@
 
     <include layout="@layout/toolbar" />
 
+
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tab_strip"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         android:textColor="@color/primary_text_default_material_dark"
         app:pstsIndicatorColor="@android:color/white"
         app:pstsTabPaddingLeftRight="16dp" />
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

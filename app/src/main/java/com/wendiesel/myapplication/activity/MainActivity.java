@@ -76,7 +76,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public class CustomPagerAdapter extends FragmentPagerAdapter {
-        private final String[] TITLES = {"Employment Information", "Fields of Interest"};
+        private final String[] TITLES = {"Employment Info", "Fields of Interest"};
 
         public CustomPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
