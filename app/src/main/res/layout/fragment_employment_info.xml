@@ -62,7 +62,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="0.4"
-            app:egAnimationTime="500"
             app:egBarWidth="32dp"
             app:egEnableScroll="false"
             app:egFixedBarWidth="true"
