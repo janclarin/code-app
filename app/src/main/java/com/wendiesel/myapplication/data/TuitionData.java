@@ -156,7 +156,7 @@ public class TuitionData {
                 comp = new Comparator<String>() {
                     @Override
                     public int compare(String lhs, String rhs) {
-                        Double a = getAverageSalary(lhs, null), b = getAverageSalary(rhs, null);
+                        Double a = getAverageSalary(lhs, 2015), b = getAverageSalary(rhs, 2015);
                         return a.compareTo(b);
                     }
                 };
@@ -165,7 +165,7 @@ public class TuitionData {
                 comp = new Comparator<String>() {
                     @Override
                     public int compare(String lhs, String rhs) {
-                        Double a = getAverageSalary(lhs, null), b = getAverageSalary(rhs, null);
+                        Double a = getAverageSalary(lhs, 2015), b = getAverageSalary(rhs, 2015);
                         return -a.compareTo(b);
                     }
                 };
