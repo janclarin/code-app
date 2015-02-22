@@ -8,12 +8,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class EducationalAttainmentData {
+    private static final String[] educationLevels = {
+            "Less than Grade 9",
+            "Some secondary school",
+            "High school graduate",
+            "Some postsecondary",
+            "Postsecondary certificate or diploma",
+            "Bachelor's degree",
+            "Above bachelor's degree"};
     private JSONObject data;
-    private ArrayList<String> educationLevels;
 
     /**
      * Creates new EducationalAttainmentData object
@@ -22,12 +30,10 @@ public class EducationalAttainmentData {
      */
     public EducationalAttainmentData(Context ctx) {
         data = JsonDataReader.readObject(ctx, R.raw.educationalattainment);
-        educationLevels = new ArrayList<>();
         Iterator<String> keys = data.keys();
         while (keys.hasNext()) {
             String key = keys.next();
             if (key.equals("Total")) continue;
-            educationLevels.add(key);
         }
     }
 
@@ -37,7 +43,7 @@ public class EducationalAttainmentData {
      * @return List of education levels, sorted from least to most
      */
     public Collection<String> getEducationLevels() {
-        return educationLevels;
+        return Arrays.asList(educationLevels);
     }
 
     /**

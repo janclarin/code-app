@@ -8,12 +8,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.TreeSet;
 
 public class TuitionData {
     private static final HashMap<String,String> salaryMapping = new HashMap<>();
+    private static final String[][] subjectMapping = {
+            // Math
+            {"Architecture and related technologies","Engineering","Mathematics, computer and information sciences"},
+            // Science
+            {"Dentistry","Engineering","Medicine","Nursing","Pharmacy","Physical and life sciences and technologies","Veterinary medicine"},
+            // English
+            {"Education","Humanities","Visual and performing arts, and communications technologies","Law, legal professions and studies","Social and behavioural sciences"},
+            // History
+            {"Agriculture, natural resources and conservation","Business management and public administration","Humanities","Law, legal professions and studies","Social and behavioural sciences"},
+            // Physical Education
+            {"Medicine","Nursing","Other health, parks, recreation and fitness"}
+    };
     static {
         salaryMapping.put("Agriculture, natural resources and conservation","Occupations unique to processing, manufacturing and utilities");
         salaryMapping.put("Architecture and related technologies","Occupations in art, culture, recreation and sport");
@@ -74,6 +89,43 @@ public class TuitionData {
      */
     public Collection<String> getFieldOfInterests() {
         return fieldOfInterests;
+    }
+
+    private class FoiRanking implements Comparable {
+        private int idx, rank;
+
+        @Override
+        public int compareTo(Object another) {
+            FoiRanking fr2 = (FoiRanking) another;
+            if (rank < fr2.rank) return 1;
+            else if (rank > fr2.rank) return -1;
+            return 0;
+        }
+
+        FoiRanking(int idx, int rank) {
+            this.idx = idx;
+            this.rank = rank;
+        }
+    }
+
+    /**
+     * Gets a list of field of interests, sorted by ranking
+     * Rankings should be relative
+     * @return List of field of interests
+     */
+    public Collection<String> getFieldOfInterests(int math, int science, int english, int history, int physed) {
+        FoiRanking rankings[] = new FoiRanking[]{new FoiRanking(0,math), new FoiRanking(1,science), new FoiRanking(2,english), new FoiRanking(3,history), new FoiRanking(4,physed)};
+        Arrays.sort(rankings);
+        ArrayList<String> foiList = new ArrayList<>();
+        HashSet<String> usedFoi = new HashSet<>();
+        for (FoiRanking fr : rankings) {
+            for (String foi : subjectMapping[fr.idx]) {
+                if (usedFoi.contains(foi)) continue;
+                usedFoi.add(foi);
+                foiList.add(foi);
+            }
+        }
+        return foiList;
     }
 
     /**
