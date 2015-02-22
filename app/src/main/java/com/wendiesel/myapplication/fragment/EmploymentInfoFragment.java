@@ -59,7 +59,7 @@ public class EmploymentInfoFragment extends Fragment {
 
         mTextEmploymentRateChange = (TextView) view.findViewById(R.id.tv_employment_rate_change);
         mTextEmploymentRateEduLevel = (TextView) view.findViewById(R.id.tv_employment_rate_edu_level);
-        final ColumnChartView columnChart = (ColumnChartView) view.findViewById(R.id.barChart);
+        final ColumnChartView columnChart = (ColumnChartView) view.findViewById(R.id.bar_chart);
 
         // Set column chart settings.
         columnChart.setZoomEnabled(false);
@@ -88,8 +88,8 @@ public class EmploymentInfoFragment extends Fragment {
 
                 // Column chart logic.
                 List<AxisValue> axisValues = new ArrayList<>();
-                axisValues.add(new AxisValue(0, "Current".toCharArray()));
-                axisValues.add(new AxisValue(1, "Future".toCharArray()));
+                axisValues.add(new AxisValue(0f, "Current".toCharArray()));
+                axisValues.add(new AxisValue(1f, "Future".toCharArray()));
 
                 List<Column> columns = new ArrayList<>();
                 List<SubcolumnValue> currentValues = new ArrayList<>();
