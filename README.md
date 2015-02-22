@@ -4,7 +4,9 @@
 -   Jan Clarin
 -   Modan Han
 -   Andrew Heng
+
 ##### References
+
 In addition to Canadian Open Data, we also used these career descriptions and images:
 -   https://commons.wikimedia.org/wiki/File:Nuvola_apps_edu_miscellaneous_%28no_words%29.svg
 -   https://commons.wikimedia.org/wiki/File:Crystal_Clear_app_kgoldrunner.png
