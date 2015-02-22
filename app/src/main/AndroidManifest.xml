@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.CareerPathDetailActivity"
-            android:label="@string/title_activity_career_path_detail"
+            android:name=".activity.InterestFieldDetailActivity"
+            android:label="@string/field_of_interest"
             android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

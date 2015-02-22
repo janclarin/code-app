@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.wendiesel.myapplication.R;
-import com.wendiesel.myapplication.activity.CareerPathDetailActivity;
+import com.wendiesel.myapplication.activity.InterestFieldDetailActivity;
 import com.wendiesel.myapplication.data.TuitionData;
 
 import java.util.Iterator;
@@ -113,7 +113,7 @@ public class ListInterestFieldFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), CareerPathDetailActivity.class);
+            Intent intent = new Intent(getActivity(), InterestFieldDetailActivity.class);
             intent.putExtra(KEY_INTEREST_FIELD, mInterestName);
             startActivity(intent);
         }
