@@ -5,24 +5,20 @@
     android:padding="8dp"
     tools:context="com.wendiesel.myapplication.fragment.EmploymentInfoFragment">
 
-    <LinearLayout
-        android:id="@+id/ll_edu_levels"
+    <TextView
+        android:id="@+id/tv_title_edu_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/tv_title_edu_level"
+        android:textColor="@color/primary_text_default_material_light"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spn_desired_edu_level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
-
-        <Spinner
-            android:id="@+id/spn_current_edu_level"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
-
-        <Spinner
-            android:id="@+id/spn_desired_edu_level"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
-    </LinearLayout>
+        android:layout_below="@id/tv_title_edu_level" />
 
     <TextView
         android:id="@+id/tv_age_group"
@@ -30,22 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/ll_edu_levels"
+        android:layout_below="@id/spn_desired_edu_level"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btn_change_age_group"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/tv_age_group"
-        android:fontFamily="sans-serif-medium"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="@string/btn_change_age_group"
-        android:textAllCaps="true"
-        android:textSize="14sp" />
 </RelativeLayout>

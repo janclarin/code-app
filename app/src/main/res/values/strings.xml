@@ -10,4 +10,7 @@
     <string name="bar_chart">Bar Chart</string>
     <string name="btn_change_age_group">Change</string>
     <string name="field_of_interest">Field of Interest</string>
+    <string name="tv_title_desired_edu_level">Desired</string>
+    <string name="tv_title_current_edu_level">Current</string>
+    <string name="tv_title_edu_level">Levels of Education</string>
 </resources>

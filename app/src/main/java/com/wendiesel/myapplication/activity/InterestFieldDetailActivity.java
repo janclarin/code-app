@@ -3,16 +3,16 @@ package com.wendiesel.myapplication.activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
-
-import com.wendiesel.myapplication.data.*;
 
 import com.wendiesel.myapplication.R;
+import com.wendiesel.myapplication.data.GeneralData;
+import com.wendiesel.myapplication.data.TuitionData;
 import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 
 import org.eazegraph.lib.charts.BarChart;
@@ -29,48 +29,46 @@ public class InterestFieldDetailActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-            Intent i = getIntent();
-            mFieldOfInterest = i.getStringExtra(ListInterestFieldFragment.KEY_INTEREST_FIELD);
-
-
-            mTuitionData = new TuitionData(this);
-            setContentView(R.layout.activity_interest_field_detail);
+        Intent i = getIntent();
+        mFieldOfInterest = i.getStringExtra(ListInterestFieldFragment.KEY_INTEREST_FIELD);
 
 
-            mToolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(mToolbar);
+        mTuitionData = new TuitionData(this);
+        setContentView(R.layout.activity_interest_field_detail);
 
 
-
-            TextView textView = (TextView) findViewById(R.id.text);
-            textView.setText(mFieldOfInterest);
-
-            BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
-            String[] provinces=(String[])GeneralData.getProvinces().toArray();
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
 
+        TextView textView = (TextView) findViewById(R.id.text);
+        textView.setText(mFieldOfInterest);
 
-            TypedArray colorPalette = getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
-            mBarChart.addBar(new BarModel("CAN",mTuitionData.getAverageTuition(mFieldOfInterest, null),0xffd50000));
-            for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
-                int val = mTuitionData.getAverageTuition(mFieldOfInterest, provinces[n]);
-                //   int val = mTuitionData.getAverageTuition(mFieldOfInterest,null);
+        BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
+        String[] provinces = (String[]) GeneralData.getProvinces().toArray();
 
-                mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
-            }
 
-            mBarChart.startAnimation();
+        TypedArray colorPalette = getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
+        mBarChart.addBar(new BarModel("CAN", mTuitionData.getAverageTuition(mFieldOfInterest, null), 0xffd50000));
+        for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
+            int val = mTuitionData.getAverageTuition(mFieldOfInterest, provinces[n]);
+            //   int val = mTuitionData.getAverageTuition(mFieldOfInterest,null);
 
-            PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
+            mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
+        }
 
-            mPieChart.addPieSlice(new PieModel("Poop", 15, Color.parseColor("#FE6DA8")));
-            mPieChart.addPieSlice(new PieModel("Sleep", 25, Color.parseColor("#56B7F1")));
-            mPieChart.addPieSlice(new PieModel("Work", 35, Color.parseColor("#CDA67F")));
-            mPieChart.addPieSlice(new PieModel("Eating", 9, Color.parseColor("#FED70E")));
+        mBarChart.startAnimation();
 
-            mPieChart.startAnimation();
+        PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
+
+        mPieChart.addPieSlice(new PieModel("Poop", 15, Color.parseColor("#FE6DA8")));
+        mPieChart.addPieSlice(new PieModel("Sleep", 25, Color.parseColor("#56B7F1")));
+        mPieChart.addPieSlice(new PieModel("Work", 35, Color.parseColor("#CDA67F")));
+        mPieChart.addPieSlice(new PieModel("Eating", 9, Color.parseColor("#FED70E")));
+
+        mPieChart.startAnimation();
     }
 
 

@@ -17,10 +17,12 @@ public class EducationalAttainmentData {
 
     /**
      * Creates new EducationalAttainmentData object
+     *
      * @param ctx Context
      */
     public EducationalAttainmentData(Context ctx) {
         data = JsonDataReader.readObject(ctx, R.raw.educationalattainment);
+        educationLevels = new ArrayList<>();
         Iterator<String> keys = data.keys();
         while (keys.hasNext()) {
             String key = keys.next();
@@ -31,6 +33,7 @@ public class EducationalAttainmentData {
 
     /**
      * Get a list of education levels, like "less than grade 9" or "bachelor's degree"
+     *
      * @return List of education levels, sorted from least to most
      */
     public Collection<String> getEducationLevels() {
@@ -39,9 +42,10 @@ public class EducationalAttainmentData {
 
     /**
      * Get employment percentage by education level and age
+     *
      * @param educationLevel Education level, from getEducationLevels()
-     * @param age Person's age, or 0 to get average for all ages
-     * @param gender Gender (can be both)
+     * @param age            Person's age, or 0 to get average for all ages
+     * @param gender         Gender (can be both)
      * @return Employment percentage (0-100%)
      */
     public double getEmploymentPercentage(String educationLevel, int age, Gender gender) {

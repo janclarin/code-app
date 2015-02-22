@@ -86,14 +86,8 @@ public class ListInterestFieldFragment extends Fragment {
          */
         private TextView mTextInterestField;
         private TextView mTextAverageTuition;
-        private ImageButton mButtonStar;
 
         private String mInterestName;
-
-        /**
-         * Indicates whether or not the interest is starred.
-         */
-        private boolean isStarred;
 
         public InterestFieldHolder(View itemView) {
             super(itemView);
@@ -102,7 +96,6 @@ public class ListInterestFieldFragment extends Fragment {
             // Find the views.
             mTextInterestField = (TextView) itemView.findViewById(R.id.tv_field_of_interest);
             mTextAverageTuition = (TextView) itemView.findViewById(R.id.tv_average_tuition);
-            mButtonStar = (ImageButton) itemView.findViewById(R.id.btn_star);
         }
 
         public void bindInterestField(String name, int tuition) {
