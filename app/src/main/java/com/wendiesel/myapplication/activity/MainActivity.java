@@ -2,6 +2,7 @@ package com.wendiesel.myapplication.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -20,6 +21,11 @@ import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 public class MainActivity extends ActionBarActivity
         implements ListInterestFieldFragment.OnListCareerPathListener,
         EmploymentInfoFragment.OnEmploymentInfoListener {
+
+    /**
+     * Preferences Key.
+     */
+    public static final String KEY_PREFS = "codePrefs";
 
     private Toolbar mToolbar;
     private CustomPagerAdapter mAdapter;
@@ -65,7 +71,8 @@ public class MainActivity extends ActionBarActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(MainActivity.this, YourInformationActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

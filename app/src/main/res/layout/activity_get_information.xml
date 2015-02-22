@@ -1,0 +1,242 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context="com.wendiesel.myapplication.activity.YourInformationActivity">
+
+            <TextView
+                android:id="@+id/tv_title_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_title_age"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spn_age_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title_age" />
+
+            <TextView
+                android:id="@+id/tv_title_current_edu_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spn_age_group"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_title_current_level_edu"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spn_current_edu_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title_current_edu_level"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tv_subject_likability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spn_current_edu_level"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_title_subject_likability"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_subject_science"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_likability"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_subject_science"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seek_science"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_science"
+                android:max="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/seek_science"
+                android:text="@string/dislike"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/seek_science"
+                android:text="@string/love"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_subject_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seek_science"
+                android:layout_marginTop="24dp"
+                android:text="@string/tv_subject_english"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seek_english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_english"
+                android:max="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/seek_english"
+                android:text="@string/dislike"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/seek_english"
+                android:text="@string/love"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_subject_math"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seek_english"
+                android:layout_marginTop="24dp"
+                android:text="@string/tv_subject_math"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seek_math"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_math"
+                android:max="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/seek_math"
+                android:text="@string/dislike"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/seek_math"
+                android:text="@string/love"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_subject_social_studies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seek_math"
+                android:layout_marginTop="24dp"
+                android:text="@string/tv_subject_social_studies"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seek_social_studies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_social_studies"
+                android:max="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/seek_social_studies"
+                android:text="@string/dislike"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/seek_social_studies"
+                android:text="@string/love"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_subject_physical_education"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seek_social_studies"
+                android:layout_marginTop="24dp"
+                android:text="@string/tv_subject_physical_education"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seek_physical_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subject_physical_education"
+                android:max="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/seek_physical_education"
+                android:text="@string/dislike"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/seek_physical_education"
+                android:text="@string/love"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

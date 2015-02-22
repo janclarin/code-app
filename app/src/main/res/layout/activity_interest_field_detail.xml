@@ -29,7 +29,5 @@
             app:egFixedBarWidth="true"
             app:egLegendHeight="40dp" />
 
-
     </LinearLayout>
-
 </LinearLayout>
