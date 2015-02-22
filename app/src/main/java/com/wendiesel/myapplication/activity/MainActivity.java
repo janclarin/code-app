@@ -39,13 +39,13 @@ public class MainActivity extends ActionBarActivity
 
         // Set view pager adapter.
         mAdapter = new CustomPagerAdapter(getFragmentManager());
+
         mViewPager.setAdapter(mAdapter);
 
         // Set page margin.
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                 .getDisplayMetrics());
         mViewPager.setPageMargin(pageMargin);
-
         mTabStrip.setViewPager(mViewPager);
     }
 
