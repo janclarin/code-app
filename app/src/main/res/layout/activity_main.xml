@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:accentColor="@android:color/white"
-        app:primaryColor="@color/theme_primary" />
+        app:primaryColor="@color/theme_primary"
+        app:textColor="@android:color/white" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
