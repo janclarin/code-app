@@ -29,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@id/spn_desired_edu_level"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         android:background="@color/theme_divider" />
 
     <TextView
@@ -56,7 +57,7 @@
         android:paddingTop="16dp">
 
         <org.eazegraph.lib.charts.BarChart
-            android:id="@+id/barchart"
+            android:id="@+id/barChart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
@@ -65,7 +66,7 @@
             app:egBarWidth="32dp"
             app:egEnableScroll="false"
             app:egFixedBarWidth="true"
-            app:egLegendHeight="40dp" />
+            app:egLegendHeight="36dp" />
 
         <LinearLayout
             android:layout_width="0dp"

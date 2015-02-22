@@ -60,7 +60,7 @@ public class EmploymentInfoFragment extends Fragment {
 
         mTextEmploymentRateChange = (TextView) view.findViewById(R.id.tv_employment_rate_change);
         mTextEmploymentRateEduLevel = (TextView) view.findViewById(R.id.tv_employment_rate_edu_level);
-        final BarChart mBarChart = (BarChart) view.findViewById(R.id.barchart);
+        final BarChart mBarChart = (BarChart) view.findViewById(R.id.barChart);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         final String currentAge = preferences.getString(YourInformationActivity.KEY_PREF_AGE_GROUP, "15 to 24 years");
