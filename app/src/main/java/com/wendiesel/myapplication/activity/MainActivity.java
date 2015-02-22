@@ -22,11 +22,6 @@ public class MainActivity extends ActionBarActivity
         implements ListInterestFieldFragment.OnListCareerPathListener,
         EmploymentInfoFragment.OnEmploymentInfoListener {
 
-    /**
-     * Preferences Key.
-     */
-    public static final String KEY_PREFS = "codePrefs";
-
     private Toolbar mToolbar;
     private CustomPagerAdapter mAdapter;
     private PagerSlidingTabStrip mTabStrip;
