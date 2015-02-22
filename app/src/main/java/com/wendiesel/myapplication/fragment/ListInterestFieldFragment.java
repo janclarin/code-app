@@ -161,7 +161,7 @@ public class ListInterestFieldFragment extends Fragment {
             mLineChart.setInteractive(false);
             mLineChart.setZoomEnabled(false);
             mLineChart.setContainerScrollEnabled(false, ContainerScrollType.HORIZONTAL);
-            mLineChart.setValueSelectionEnabled(true);
+            mLineChart.setValueSelectionEnabled(false);
         }
 
         public void bindInterestField(String name, int tuition) {

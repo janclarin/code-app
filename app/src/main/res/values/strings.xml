@@ -20,7 +20,7 @@
     <string name="tv_title_edu_level">Education goal</string>
     <string name="odds_of_hired">Employment rate based on goal</string>
     <string name="tv_description_employment_rate_1">Based on Statistics Canada, your age and education, you have a</string>
-    <string name="tv_description_employment_rate_2">chance of being employed if your level of education is</string>
+    <string name="tv_description_employment_rate_2">chance of being employed once your level of education is</string>
     <string name="tv_about">About</string>
     <string name="tv_average_salary">Average wages in Canada</string>
     <string name="tv_tuition_fees">Annual tuition fees by province</string>
@@ -32,5 +32,5 @@
     <string name="action_sort_tuition_desc">Tuition - Descending</string>
     <string name="action_sort_salary_asc">Salary - Ascending</string>
     <string name="action_sort_salary_desc">Salary - Descending</string>
-    <string name="toast_recommending_career_paths">Recommending career paths for you…</string>
+    <string name="toast_recommending_career_paths">Personalizing your Second Path…</string>
 </resources>
