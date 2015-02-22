@@ -132,7 +132,7 @@ public class YourInformationActivity extends ActionBarActivity {
 
             // Show toast.
             Toast.makeText(YourInformationActivity.this,
-                    "Recommending Career Path",
+                    getString(R.string.toast_recommending_career_paths),
                     Toast.LENGTH_SHORT).show();
 
             // Start main activity.

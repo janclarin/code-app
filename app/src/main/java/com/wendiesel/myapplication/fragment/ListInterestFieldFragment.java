@@ -149,7 +149,7 @@ public class ListInterestFieldFragment extends Fragment {
 
             mInterestName = name;
             double avgSalaryPerHour = mTuitionData.getAverageSalary(mInterestName, null);
-            String wageInfo = String.format("$%.2f/hour \n$%.0f/year (approximately)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
+            String wageInfo = String.format("$%.2f/hour or $%.0f/year (approximately)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
             mTextInterestField.setText(name);
             mTextAverageTuition.setText(mAverageTuitionText + tuition + "/year");
             mAboutText.setText(mTuitionData.getDescription(mInterestName));

@@ -34,4 +34,5 @@
     <string name="action_sort_tuition_desc">Tuition - Descending</string>
     <string name="action_sort_salary_asc">Salary - Ascending</string>
     <string name="action_sort_salary_desc">Salary - Descending</string>
+    <string name="toast_recommending_career_paths">Recommending Career Paths</string>
 </resources>
