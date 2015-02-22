@@ -26,4 +26,6 @@
     <string name="tv_subject_physical_education">Physical Education</string>
     <string name="title_activity_your_information">Your Information</string>
     <string name="action_done">Done</string>
+    <string name="tv_title_edu_level">Education Goal: </string>
+    <string name="odds_of_hired">Odds of Getting Hired</string>
 </resources>
