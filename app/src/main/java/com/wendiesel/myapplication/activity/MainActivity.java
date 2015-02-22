@@ -74,6 +74,8 @@ public class MainActivity extends ActionBarActivity
                     .setText(mAdapter.getPageTitle(i))
                     .setTabListener(this));
         }
+
+
     }
 
     @Override
@@ -87,12 +89,15 @@ public class MainActivity extends ActionBarActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+
+
         switch (id) {
             case R.id.action_account:
                 Intent intent = new Intent(MainActivity.this, YourInformationActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
+
             case R.id.action_sort_recommendations:
                 mAdapter.mListInterestFragment.sortBy(null);
                 item.setChecked(true);
@@ -118,6 +123,13 @@ public class MainActivity extends ActionBarActivity
                 item.setChecked(true);
                 break;
         }
+
+        if(R.id.action_account != id){
+            mTabHost.setSelectedNavigationItem(1);
+            mViewPager.setCurrentItem(1);
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -137,7 +149,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public class CustomPagerAdapter extends FragmentPagerAdapter {
-        private final String[] TITLES = {"Career Paths", "Employment Info"};
+        private final String[] TITLES = {"Employment Info","Career Paths"};
 
         ListInterestFieldFragment mListInterestFragment;
         EmploymentInfoFragment mEmploymentInfoFragment;
@@ -159,12 +171,14 @@ public class MainActivity extends ActionBarActivity
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0:
+                case 1:
                     if (mListInterestFragment == null) {
                         mListInterestFragment = new ListInterestFieldFragment();
                     }
+
+
                     return mListInterestFragment;
-                case 1:
+                case 0:
                     if (mEmploymentInfoFragment == null) {
                         mEmploymentInfoFragment = new EmploymentInfoFragment();
                     }

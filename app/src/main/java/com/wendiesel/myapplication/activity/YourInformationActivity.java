@@ -132,7 +132,7 @@ public class YourInformationActivity extends ActionBarActivity {
 
             // Show toast.
             Toast.makeText(YourInformationActivity.this,
-                    "Information saved.\nRefreshing career path recommendations.",
+                    "Recommending Career Path",
                     Toast.LENGTH_SHORT).show();
 
             // Start main activity.
