@@ -1,33 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
-    android:minHeight="72dp"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp">
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tv_field_of_interest"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/primary_text_default_material_light"
-        android:textSize="14sp" />
+        android:layout_gravity="center_vertical"
+        android:minHeight="72dp"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_average_tuition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:singleLine="true"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_field_of_interest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/primary_text_default_material_light"
+            android:textSize="16sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/theme_divider" />
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_interest_field_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_about"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="14sp" />
+
+            <!-- TODO: Set About text -->
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/theme_divider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_average_salary"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="14sp" />
+
+            <!-- TODO: Set average salary for this -->
+            <TextView
+                android:id="@+id/tv_average_salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/theme_divider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tv_tuition_fees"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textSize="14sp" />
+
+            <!-- TODO: Set bar chart info -->
+            <org.eazegraph.lib.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="4dp"
+                android:clipToPadding="false"
+                app:egBarWidth="16dp"
+                app:egFixedBarWidth="true"
+                app:egLegendHeight="36p" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_average_tuition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:textSize="14sp" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

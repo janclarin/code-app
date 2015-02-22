@@ -2,7 +2,6 @@ package com.wendiesel.myapplication.activity;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,9 +15,7 @@ import com.wendiesel.myapplication.data.TuitionData;
 import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 
 import org.eazegraph.lib.charts.BarChart;
-import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.BarModel;
-import org.eazegraph.lib.models.PieModel;
 
 public class InterestFieldDetailActivity extends ActionBarActivity {
 
@@ -43,10 +40,10 @@ public class InterestFieldDetailActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
 
 
-        TextView textView = (TextView) findViewById(R.id.text);
+        TextView textView = (TextView) findViewById(R.id.tv_interest_field_name);
         textView.setText(mFieldOfInterest);
 
-        BarChart mBarChart = (BarChart) findViewById(R.id.barchart);
+        BarChart mBarChart = (BarChart) findViewById(R.id.barChart);
         String[] provinces = (String[]) GeneralData.getProvinces().toArray();
 
 

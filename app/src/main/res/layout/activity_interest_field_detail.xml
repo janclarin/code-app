@@ -15,13 +15,12 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/tv_interest_field_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bar_chart" />
+            android:layout_height="wrap_content" />
 
         <org.eazegraph.lib.charts.BarChart xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/barchart"
+            android:id="@+id/barChart"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:clipToPadding="false"
