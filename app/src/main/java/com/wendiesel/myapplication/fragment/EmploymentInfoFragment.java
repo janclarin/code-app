@@ -90,7 +90,10 @@ public class EmploymentInfoFragment extends Fragment {
                 mBarChart.startAnimation();
 
                 // Set text fields in employment rate paragraph.
-                mTextEmploymentRateChange.setText(String.format("%.0f%%", odds - currentOdds));
+                double difference = odds - currentOdds;
+                String rateChange = (difference >= 0) ? String.format("%.0f%% higher", difference) :
+                        String.format("%.0f%% lower", Math.abs(difference));
+                mTextEmploymentRateChange.setText(rateChange);
                 mTextEmploymentRateEduLevel.setText(educationLevel);
             }
 
