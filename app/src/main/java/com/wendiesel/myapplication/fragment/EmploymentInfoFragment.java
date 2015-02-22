@@ -2,7 +2,9 @@ package com.wendiesel.myapplication.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wendiesel.myapplication.R;
+import com.wendiesel.myapplication.activity.YourInformationActivity;
 import com.wendiesel.myapplication.data.EducationalAttainmentData;
 import com.wendiesel.myapplication.data.Gender;
 
@@ -59,7 +62,11 @@ public class EmploymentInfoFragment extends Fragment {
 
         final BarChart mBarChart = (BarChart) view.findViewById(R.id.barchart);
 
-        //TODO current bar
+
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        final String currentage=preferences.getString(YourInformationActivity.KEY_PREF_AGE_GROUP,"15 to 24 years");
+        final String currented=preferences.getString(YourInformationActivity.KEY_PREF_CURRENT_EDU_LEVEL,"Less than Grade 9");
+
         currentBar = new BarModel(50f,0xff78909c);
         currentBar.setLegendLabel("Current");
         futureBar=new BarModel(0f,0xff5c6bc0);
@@ -83,8 +90,10 @@ public class EmploymentInfoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String educationLevel = mSpinnerEduLevelDesired.getSelectedItem().toString();
-                //TODO 15 to 24 years placeholder
-                double odds = data.getEmploymentPercentage(educationLevel, "15 to 24 years", Gender.BOTH);
+
+                double odds = data.getEmploymentPercentage(educationLevel, currentage, Gender.BOTH);
+                double currentodds=data.getEmploymentPercentage(currented,currentage,Gender.BOTH);
+                currentBar.setValue((int)currentodds);
                 futureBar.setValue((int)odds);
                 mBarChart.update();
 
