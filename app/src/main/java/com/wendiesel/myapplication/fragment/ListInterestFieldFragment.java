@@ -189,6 +189,7 @@ public class ListInterestFieldFragment extends Fragment {
                     .setColor(getResources().getColor(R.color.theme_accent))
                     .setShape(ValueShape.CIRCLE)
                     .setFilled(true)
+                    .setCubic(true)
                     .setHasPoints(true)
                     .setHasLabels(true);
             List<Line> lines = new ArrayList<>();
