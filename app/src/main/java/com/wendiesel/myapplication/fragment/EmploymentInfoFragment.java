@@ -63,8 +63,8 @@ public class EmploymentInfoFragment extends Fragment {
         final BarChart mBarChart = (BarChart) view.findViewById(R.id.barchart);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        final String currentage = preferences.getString(YourInformationActivity.KEY_PREF_AGE_GROUP, "15 to 24 years");
-        final String currented = preferences.getString(YourInformationActivity.KEY_PREF_CURRENT_EDU_LEVEL, "Less than Grade 9");
+        final String currentAge = preferences.getString(YourInformationActivity.KEY_PREF_AGE_GROUP, "15 to 24 years");
+        final String currentEdu = preferences.getString(YourInformationActivity.KEY_PREF_CURRENT_EDU_LEVEL, "Less than Grade 9");
 
         currentBar = new BarModel(50f, 0xff78909c);
         currentBar.setLegendLabel("Current");
@@ -73,8 +73,6 @@ public class EmploymentInfoFragment extends Fragment {
         mBarChart.addBar(currentBar);
         mBarChart.addBar(futureBar);
 
-
-        mBarChart.startAnimation();
         // Find views.
         mSpinnerEduLevelDesired = (Spinner) view.findViewById(R.id.spn_desired_edu_level);
 
@@ -82,22 +80,22 @@ public class EmploymentInfoFragment extends Fragment {
                 getActivity(), android.R.layout.simple_list_item_1, mEducationLevels);
         mSpinnerEduLevelDesired.setAdapter(adapter);
 
-
         mSpinnerEduLevelDesired.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String educationLevel = mSpinnerEduLevelDesired.getSelectedItem().toString();
 
-                double odds = data.getEmploymentPercentage(educationLevel, currentage, Gender.BOTH);
-                double currentodds = data.getEmploymentPercentage(currented, currentage, Gender.BOTH);
-                currentBar.setValue((int) currentodds);
+                double odds = data.getEmploymentPercentage(educationLevel, currentAge, Gender.BOTH);
+                double currentOdds = data.getEmploymentPercentage(currentEdu, currentAge, Gender.BOTH);
+                currentBar.setValue((int) currentOdds);
                 futureBar.setValue((int) odds);
                 mBarChart.update();
+                mBarChart.startAnimation();
 
-                mTextEmploymentRateChange.setText(String.format("%.0f%%", odds-currentodds));
+                // Set text fields in employment rate paragraph.
+                mTextEmploymentRateChange.setText(String.format("%.0f%%", odds - currentOdds));
                 mTextEmploymentRateEduLevel.setText(educationLevel);
-
             }
 
             @Override
