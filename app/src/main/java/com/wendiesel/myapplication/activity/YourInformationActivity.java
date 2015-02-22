@@ -46,8 +46,8 @@ public class YourInformationActivity extends ActionBarActivity {
 
         // Data.
         EducationalAttainmentData data = new EducationalAttainmentData(getApplicationContext());
-        String[] eduLevels = (String[]) data.getEducationLevels().toArray();
         String[] ageGroups = (String[]) data.getAges().toArray();
+        String[] eduLevels = (String[]) data.getEducationLevels().toArray();
 
         // Find views.
         mSpinnerAgeGroup = (Spinner) findViewById(R.id.spn_age_group);
@@ -59,14 +59,36 @@ public class YourInformationActivity extends ActionBarActivity {
         mSeekPhysicalEdu = (SeekBar) findViewById(R.id.seek_physical_education);
 
         // Spinner adapters.
-        ArrayAdapter<String> adapterEduLevels = new ArrayAdapter<>(YourInformationActivity.this,
-                android.R.layout.simple_list_item_1, eduLevels);
         ArrayAdapter<String> adapterAgeGroup = new ArrayAdapter<>(YourInformationActivity.this,
                 android.R.layout.simple_list_item_1, ageGroups);
+        ArrayAdapter<String> adapterEduLevels = new ArrayAdapter<>(YourInformationActivity.this,
+                android.R.layout.simple_list_item_1, eduLevels);
 
         // Set spinner adapters.
-        mSpinnerCurrentEduLevel.setAdapter(adapterEduLevels);
         mSpinnerAgeGroup.setAdapter(adapterAgeGroup);
+        mSpinnerCurrentEduLevel.setAdapter(adapterEduLevels);
+
+        // Get position of saved age group.
+        String savedAgeGroup = mSharedPreferences.getString(KEY_PREF_AGE_GROUP, ageGroups[0]);
+        int agePosition = 0;
+        for (int i = 0; i < ageGroups.length; i++) {
+            if (ageGroups[i].equals(savedAgeGroup)) {
+                break;
+            }
+            agePosition++;
+        }
+        mSpinnerAgeGroup.setSelection(agePosition);
+
+        // Get position of saved education level.
+        String savedEduLevel = mSharedPreferences.getString(KEY_PREF_CURRENT_EDU_LEVEL, eduLevels[0]);
+        int eduLevel = 0;
+        for (int i = 0; i < eduLevels.length; i++) {
+            if (eduLevels[i].equals(savedEduLevel)) {
+                break;
+            }
+            eduLevel++;
+        }
+        mSpinnerCurrentEduLevel.setSelection(eduLevel);
 
         // Change how much each increments by.
         mSeekScience.incrementProgressBy(1);
