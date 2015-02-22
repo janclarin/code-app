@@ -66,9 +66,9 @@ public class EmploymentInfoFragment extends Fragment {
         final String currentAge = preferences.getString(YourInformationActivity.KEY_PREF_AGE_GROUP, "15 to 24 years");
         final String currentEdu = preferences.getString(YourInformationActivity.KEY_PREF_CURRENT_EDU_LEVEL, "Less than Grade 9");
 
-        currentBar = new BarModel(50f, 0xff78909c);
+        currentBar = new BarModel(50f, 0xff66BB6A);
         currentBar.setLegendLabel("Current");
-        futureBar = new BarModel(0f, 0xff5c6bc0);
+        futureBar = new BarModel(0f, 0xff2196F3);
         futureBar.setLegendLabel("Future");
         mBarChart.addBar(currentBar);
         mBarChart.addBar(futureBar);
