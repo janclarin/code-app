@@ -94,6 +94,7 @@ public class ListInterestFieldFragment extends Fragment {
         /**
          * Views for each compliment.
          */
+        private View mLayoutExpand;
         private TextView mTextInterestField;
         private TextView mTextAverageTuition;
         private TextView mAboutText;
@@ -107,6 +108,7 @@ public class ListInterestFieldFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             // Find the views.
+            mLayoutExpand = itemView.findViewById(R.id.ll_interest_field_info);
             mTextInterestField = (TextView) itemView.findViewById(R.id.tv_field_of_interest);
             mTextAverageTuition = (TextView) itemView.findViewById(R.id.tv_average_tuition);
             mAboutText = (TextView) itemView.findViewById(R.id.tv_about);
@@ -116,13 +118,12 @@ public class ListInterestFieldFragment extends Fragment {
 
         public void bindInterestField(String name, int tuition) {
             mInterestName = name;
+            double avgSalaryPerHour = mTuitionData.getAverageSalary(mInterestName, null);
+            String wageInfo = String.format("$%.2f/hour \n$%.0f/year (approximate)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
             mTextInterestField.setText(name);
             mTextAverageTuition.setText(mAverageTuitionText + tuition + "/year");
-            TuitionData data = new TuitionData(getActivity());
-            mAboutText.setText(data.getDescription(mInterestName));
-            double avgSalaryPerHour = data.getAverageSalary(mInterestName, null);
-            String wageinfo = String.format("$%.2f/hour \n$%.0f/year (approximate)", avgSalaryPerHour, (avgSalaryPerHour * 2080));
-            mAverageSalary.setText(wageinfo);
+            mAboutText.setText(mTuitionData.getDescription(mInterestName));
+            mAverageSalary.setText(wageInfo);
 
             String[] provinces = (String[]) GeneralData.getProvinces().toArray();
             TypedArray colorPalette = getActivity().getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
@@ -134,11 +135,11 @@ public class ListInterestFieldFragment extends Fragment {
                 int val = mTuitionData.getAverageTuition(mInterestName, provinces[n]);
                 mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
             }
-
         }
 
         @Override
         public void onClick(View v) {
+            mLayoutExpand.setVisibility(mLayoutExpand.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
         }
     }
 

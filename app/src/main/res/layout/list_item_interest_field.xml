@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -38,7 +39,6 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="14sp" />
 
-            <!-- TODO: Set About text -->
             <TextView
                 android:id="@+id/tv_about"
                 android:layout_width="match_parent"
@@ -61,7 +61,6 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="14sp" />
 
-            <!-- TODO: Set average salary for this -->
             <TextView
                 android:id="@+id/tv_average_salary"
                 android:layout_width="match_parent"
@@ -84,17 +83,17 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="14sp" />
 
-            <!-- TODO: Set bar chart info -->
             <org.eazegraph.lib.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginTop="4dp"
-                app:egBarWidth="16dp"
-                app:egFixedBarWidth="true"
+                app:egAnimationTime="0"
+                app:egBarWidth="12dp"
                 app:egEnableScroll="false"
-                app:egLegendTextSize="10sp"
-                app:egLegendHeight="36dp" />
+                app:egFixedBarWidth="true"
+                app:egLegendHeight="36dp"
+                app:egLegendTextSize="8sp" />
 
         </LinearLayout>
 
