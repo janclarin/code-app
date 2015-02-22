@@ -12,6 +12,6 @@
     <string name="field_of_interest">Field of Interest</string>
     <string name="tv_title_desired_edu_level">Desired</string>
     <string name="tv_title_current_edu_level">Current</string>
-    <string name="tv_title_edu_level">Future Levels of Education</string>
+    <string name="tv_title_edu_level">Education Goal: </string>
     <string name="odds_of_hired">Odds of Getting Hired</string>
 </resources>

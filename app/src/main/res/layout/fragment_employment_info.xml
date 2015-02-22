@@ -1,49 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context="com.wendiesel.myapplication.fragment.EmploymentInfoFragment">
+    tools:context="com.wendiesel.myapplication.fragment.EmploymentInfoFragment"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_title_edu_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/tv_title_edu_level"
         android:textColor="@color/primary_text_default_material_light"
         android:textSize="20sp"
-        android:singleLine="false" />
+         />
 
     <Spinner
         android:id="@+id/spn_desired_edu_level"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title_edu_level" />
-
-    <TextView
-        android:id="@+id/tv_age_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/spn_desired_edu_level"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="20sp" />
-
-    <org.eazegraph.lib.charts.BarChart
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/barchart"
-        android:layout_width="256dp"
-
-        android:layout_height="256dp"
-        android:padding="10dp"
-        app:egFixedBarWidth="true"
-        app:egBarWidth="30dp"
-        app:egLegendHeight="40dp"
-        android:layout_below="@+id/tv_age_group"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,7 +28,42 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/odds_of_hired"
         android:id="@+id/textView"
-        android:layout_alignTop="@+id/tv_age_group"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/tv_age_group"
+        android:layout_toEndOf="@+id/tv_age_group"
+        android:layout_marginBottom="66dp">
+
+        <org.eazegraph.lib.charts.BarChart
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/barchart"
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:egFixedBarWidth="true"
+            app:egBarWidth="30dp"
+            app:egLegendHeight="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:padding="16dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="New Text"
+            android:id="@+id/textView2"
+            android:layout_weight="0.6" />
+    </LinearLayout>
+
+</LinearLayout>
