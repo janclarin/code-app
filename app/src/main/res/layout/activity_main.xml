@@ -8,16 +8,12 @@
 
     <include layout="@layout/toolbar" />
 
-
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/tab_strip"
+    <it.neokree.materialtabs.MaterialTabHost
+        android:id="@+id/tab_host"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/primary_text_default_material_dark"
-        app:pstsIndicatorColor="@android:color/white"
-        app:pstsTabPaddingLeftRight="16dp" />
-
+        android:layout_height="48dp"
+        app:accentColor="@android:color/white"
+        app:primaryColor="@color/theme_primary" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

@@ -8,23 +8,26 @@ import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.fragment.EmploymentInfoFragment;
 import com.wendiesel.myapplication.fragment.ListInterestFieldFragment;
 
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
+
 
 public class MainActivity extends ActionBarActivity
-        implements ListInterestFieldFragment.OnListCareerPathListener,
+        implements MaterialTabListener,
+        ListInterestFieldFragment.OnListCareerPathListener,
         EmploymentInfoFragment.OnEmploymentInfoListener {
 
     private Toolbar mToolbar;
     private CustomPagerAdapter mAdapter;
-    private PagerSlidingTabStrip mTabStrip;
+    private MaterialTabHost mTabHost;
     private ViewPager mViewPager;
 
 
@@ -36,19 +39,26 @@ public class MainActivity extends ActionBarActivity
         setSupportActionBar(mToolbar);
 
         // Find views.
-        mTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);
+        mTabHost = (MaterialTabHost) findViewById(R.id.tab_host);
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
 
         // Set view pager adapter.
         mAdapter = new CustomPagerAdapter(getFragmentManager());
 
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                mTabHost.setSelectedNavigationItem(position);
+            }
+        });
 
-        // Set page margin.
-        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
-                .getDisplayMetrics());
-        mViewPager.setPageMargin(pageMargin);
-        mTabStrip.setViewPager(mViewPager);
+        // Insert all tabs.
+        for (int i = 0; i < mAdapter.getCount(); i++) {
+            mTabHost.addTab(mTabHost.newTab()
+                    .setText(mAdapter.getPageTitle(i))
+                    .setTabListener(this));
+        }
     }
 
     @Override
@@ -73,6 +83,21 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(MaterialTab materialTab) {
+        mViewPager.setCurrentItem(materialTab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab materialTab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab materialTab) {
+
     }
 
     public class CustomPagerAdapter extends FragmentPagerAdapter {
