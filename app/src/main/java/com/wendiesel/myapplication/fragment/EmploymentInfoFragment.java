@@ -3,6 +3,7 @@ package com.wendiesel.myapplication.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,8 +83,8 @@ public class EmploymentInfoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String educationLevel = mSpinnerEduLevelDesired.getSelectedItem().toString();
-                int temp = 20;
-                double odds = data.getEmploymentPercentage(educationLevel, temp, Gender.BOTH);
+                //TODO 15 to 24 years placeholder
+                double odds = data.getEmploymentPercentage(educationLevel, "15 to 24 years", Gender.BOTH);
                 Toast.makeText(getActivity(), "%"+odds, Toast.LENGTH_SHORT).show();
 
                 futureBar.setValue((int)odds);
