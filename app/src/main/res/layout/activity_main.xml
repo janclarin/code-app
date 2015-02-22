@@ -15,7 +15,7 @@
         android:background="?attr/colorPrimary"
         android:textColor="@color/primary_text_default_material_dark"
         app:pstsIndicatorColor="@android:color/white"
-        app:pstsTabPaddingLeftRight="24dp" />
+        app:pstsTabPaddingLeftRight="16dp" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

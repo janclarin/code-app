@@ -6,13 +6,21 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.wendiesel.myapplication.R;
 
 public class EmploymentInfoFragment extends Fragment {
 
     private OnEmploymentInfoListener mListener;
 
-    // TODO: Rename and change types and number of parameters
+    private Spinner mSpinnerEduLevelCurrent;
+    private Spinner mSpinnerEduLevelDesired;
+    private TextView mTextAgeGroup;
+    private Button mButtonChangeAgeGroup;
+
     public static EmploymentInfoFragment newInstance() {
         return new EmploymentInfoFragment();
     }
