@@ -34,23 +34,23 @@ public class TuitionData {
     };
 
     static {
-        salaryMapping.put("Agriculture, natural resources and conservation", "Occupations unique to processing, manufacturing and utilities");
-        salaryMapping.put("Architecture and related technologies", "Occupations in art, culture, recreation and sport");
-        salaryMapping.put("Business management and public administration", "Management occupations");
-        salaryMapping.put("Dentistry", "Health occupations");
-        salaryMapping.put("Education", "Occupations in social science, education, government service and religion");
-        salaryMapping.put("Engineering", "Natural and applied sciences and related occupations");
-        salaryMapping.put("Humanities", "Occupations in social science, education, government service and religion");
-        salaryMapping.put("Law, legal professions and studies", "Business, finance and administrative occupations");
-        salaryMapping.put("Mathematics, computer and information sciences", "Natural and applied sciences and related occupations");
-        salaryMapping.put("Medicine", "Health occupations");
-        salaryMapping.put("Nursing", "Health occupations");
-        salaryMapping.put("Other health, parks, recreation and fitness", "Occupations in art, culture, recreation and sport");
-        salaryMapping.put("Pharmacy", "Health occupations");
-        salaryMapping.put("Physical and life sciences and technologies", "Natural and applied sciences and related occupations");
-        salaryMapping.put("Social and behavioural sciences", "Occupations in social science, education, government service and religion");
-        salaryMapping.put("Veterinary medicine", "Health occupations");
-        salaryMapping.put("Visual and performing arts, and communications technologies", "Occupations in art, culture, recreation and sport");
+        salaryMapping.put("Agriculture, natural resources and conservation", "Natural and applied sciences and related occupations [C]");
+        salaryMapping.put("Architecture and related technologies", "Natural and applied sciences and related occupations [C]");
+        salaryMapping.put("Business management and public administration", "Professional occupations in business and finance [B0]");
+        salaryMapping.put("Dentistry", "Professional occupations in health, nurse supervisors and registered nurses [D0-D1]");
+        salaryMapping.put("Education", "Teachers and professors [E1 E130]  (9)");
+        salaryMapping.put("Engineering", "Natural and applied sciences and related occupations [C]");
+        salaryMapping.put("Humanities", "Occupations in social science, government service and religion [E0 E2]");
+        salaryMapping.put("Law, legal professions and studies", "Occupations in social science, government service and religion [E0 E2]");
+        salaryMapping.put("Mathematics, computer and information sciences", "Natural and applied sciences and related occupations [C]");
+        salaryMapping.put("Medicine", "Professional occupations in health, nurse supervisors and registered nurses [D0-D1]");
+        salaryMapping.put("Nursing", "Health occupations [D]");
+        salaryMapping.put("Other health, parks, recreation and fitness", "Sales and service occupations not elsewhere classified, including occupations in travel and accommodation, attendants in recreation and sport as well as supervisors [G013-G016 G7 G9]");
+        salaryMapping.put("Pharmacy", "Health occupations [D]");
+        salaryMapping.put("Physical and life sciences and technologies", "Natural and applied sciences and related occupations [C]");
+        salaryMapping.put("Social and behavioural sciences", "Occupations in social science, government service and religion [E0 E2]");
+        salaryMapping.put("Veterinary medicine", "Technical, assisting and related occupations in health [D2-D3]");
+        salaryMapping.put("Visual and performing arts, and communications technologies", "Occupations in art, culture, recreation and sport [F]");
         infoMapping.put("Agriculture, natural resources and conservation", "Agriculture is the cultivation of animals, plants, fungi, and other life forms for food, fiber, biofuel, medicinals and other products used to sustain and enhance human life. Natural resources occur naturally within environments that exist relatively undisturbed by humanity, in a natural form.");
         infoMapping.put("Architecture and related technologies", "Architecture is both the process and the product of planning, designing, and constructing buildings and other physical structures. Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.");
         infoMapping.put("Business management and public administration", "Management in business and organizations is the function that coordinates the efforts of people to accomplish goals and objectives using available resources efficiently and effectively.");
@@ -91,7 +91,7 @@ public class TuitionData {
                 throw new RuntimeException(e);
             }
         }
-        salary = JsonDataReader.readObject(ctx, R.raw.salaryindustry);
+        salary = JsonDataReader.readObject(ctx, R.raw.salaryindustry2);
     }
 
     /**
@@ -213,13 +213,13 @@ public class TuitionData {
      * Gets average salary (per hour) for a field of interest
      *
      * @param fieldOfInterest Field of interest
-     * @param province        Province (or null for entire Canada)
+     * @param year        Year (1997-2015)
      * @return Average salary, per hour
      */
-    public double getAverageSalary(String fieldOfInterest, String province) {
-        if (province == null) province = "Canada";
+    public double getAverageSalary(String fieldOfInterest, int year) {
+        String key = String.format("Jan-%d", year);
         try {
-            return salary.getJSONObject(province).getDouble(salaryMapping.get(fieldOfInterest));
+            return salary.getJSONObject(salaryMapping.get(fieldOfInterest)).getDouble(key);
         } catch (Exception e) {
             return 0.0;
         }
