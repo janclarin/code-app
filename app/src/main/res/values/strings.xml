@@ -12,6 +12,20 @@
     <string name="field_of_interest">Field of Interest</string>
     <string name="tv_title_desired_edu_level">Desired</string>
     <string name="tv_title_current_edu_level">Current</string>
+    <string name="tv_title_edu_level">Levels of Education</string>
+    <string name="title_activity_get_information">GetInformationActivity</string>
+    <string name="tv_title_age">Age group:</string>
+    <string name="tv_title_current_level_edu">Current level of education:</string>
+    <string name="tv_title_subject_likability">Subject preferences:</string>
+    <string name="dislike">Dislike</string>
+    <string name="love">Like</string>
+    <string name="tv_subject_science">Science</string>
+    <string name="tv_subject_english">English</string>
+    <string name="tv_subject_math">Math</string>
+    <string name="tv_subject_social_studies">Social Studies</string>
+    <string name="tv_subject_physical_education">Physical Education</string>
+    <string name="title_activity_your_information">Your Information</string>
+    <string name="action_done">Done</string>
     <string name="tv_title_edu_level">Education Goal: </string>
     <string name="odds_of_hired">Odds of Getting Hired</string>
 </resources>

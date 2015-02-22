@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wendiesel.myapplication.activity.MainActivity" />
         </activity>
+        <activity
+            android:name=".activity.YourInformationActivity"
+            android:label="@string/title_activity_your_information"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wendiesel.myapplication.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
