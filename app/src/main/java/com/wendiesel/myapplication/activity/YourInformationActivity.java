@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.data.EducationalAttainmentData;
@@ -118,6 +119,7 @@ public class YourInformationActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_done) {
+            // Save values.
             SharedPreferences.Editor editor = mSharedPreferences.edit();
             editor.putString(KEY_PREF_AGE_GROUP, (String) mSpinnerAgeGroup.getSelectedItem());
             editor.putString(KEY_PREF_CURRENT_EDU_LEVEL, (String) mSpinnerCurrentEduLevel.getSelectedItem());
@@ -127,6 +129,13 @@ public class YourInformationActivity extends ActionBarActivity {
             editor.putInt(KEY_PREF_SOCIAL_STUDIES, mSeekSocialStudies.getProgress());
             editor.putInt(KEY_PREF_PHYSICAL_EDU, mSeekPhysicalEdu.getProgress());
             editor.apply();
+
+            // Show toast.
+            Toast.makeText(YourInformationActivity.this,
+                    "Information saved. Refreshing career path recommendations.",
+                    Toast.LENGTH_SHORT).show();
+
+            // Start main activity.
             Intent intent = new Intent(YourInformationActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

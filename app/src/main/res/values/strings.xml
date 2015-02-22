@@ -26,4 +26,6 @@
     <string name="tv_about">About</string>
     <string name="tv_average_salary">Average wage and salary in Canada</string>
     <string name="tv_tuition_fees">Annual tuition fees by province</string>
+    <string name="action_account">Account</string>
+    <string name="action_sort">Sort</string>
 </resources>
