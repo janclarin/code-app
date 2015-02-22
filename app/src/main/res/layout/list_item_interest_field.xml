@@ -91,7 +91,7 @@
                 android:layout_height="220dp"
                 android:layout_marginTop="4dp"
                 android:clipToPadding="false"
-                app:egBarWidth="16dp"
+                app:egBarWidth="14dp"
                 app:egFixedBarWidth="true"
                 app:egLegendHeight="36p" />
         </LinearLayout>

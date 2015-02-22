@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +17,11 @@ import android.widget.TextView;
 import com.wendiesel.myapplication.R;
 import com.wendiesel.myapplication.activity.InterestFieldDetailActivity;
 import com.wendiesel.myapplication.activity.YourInformationActivity;
+import com.wendiesel.myapplication.data.GeneralData;
 import com.wendiesel.myapplication.data.TuitionData;
+
+import org.eazegraph.lib.charts.BarChart;
+import org.eazegraph.lib.models.BarModel;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -94,6 +99,9 @@ public class ListInterestFieldFragment extends Fragment {
          */
         private TextView mTextInterestField;
         private TextView mTextAverageTuition;
+        private TextView mAboutText;
+        private TextView mAverageSalary;
+        private BarChart mBarChart;
 
         private String mInterestName;
 
@@ -104,12 +112,32 @@ public class ListInterestFieldFragment extends Fragment {
             // Find the views.
             mTextInterestField = (TextView) itemView.findViewById(R.id.tv_field_of_interest);
             mTextAverageTuition = (TextView) itemView.findViewById(R.id.tv_average_tuition);
+            mAboutText = (TextView) itemView.findViewById(R.id.tv_about);
+            mAverageSalary = (TextView) itemView.findViewById(R.id.tv_average_salary);
+            mBarChart = (BarChart) itemView.findViewById(R.id.barChart);
         }
 
         public void bindInterestField(String name, int tuition) {
             mInterestName = name;
             mTextInterestField.setText(name);
-            mTextAverageTuition.setText(mAverageTuitionText + tuition);
+            mTextAverageTuition.setText(mAverageTuitionText + tuition +"/yr");
+            TuitionData data = new TuitionData(getActivity());
+            mAboutText.setText(data.getDescription(mInterestName).toString());
+            double avgSalaryPerHour = data.getAverageSalary(mInterestName, null);
+            String wageinfo = String.format("$%.2f/hr \nApprox. $%.0f/yr",avgSalaryPerHour,(avgSalaryPerHour*2080));
+            mAverageSalary.setText(wageinfo);
+
+            String[] provinces = (String[]) GeneralData.getProvinces().toArray();
+            TypedArray colorPalette = getActivity().getApplicationContext().getResources().obtainTypedArray(R.array.province_color);
+
+            mBarChart.clearChart();
+
+           // mBarChart.addBar(new BarModel("CAN", mTuitionData.getAverageTuition(mInterestName, null), 0xffd50000));
+            for (int n = 0; n < GeneralData.abbrev_provinces.length; n++) {
+                int val = mTuitionData.getAverageTuition(mInterestName, provinces[n]);
+                mBarChart.addBar(new BarModel(GeneralData.abbrev_provinces[n], val, colorPalette.getColor(n, 0)));
+            }
+
         }
 
         @Override
