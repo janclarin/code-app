@@ -1,15 +1,19 @@
-### Canadian Open Data Experience Hackathon
-##### Team Members:
+## Second Path
+### [Canadian Open Data Experience](https://www.canadianopendataexperience.ca) 48-Hour Hackathon Application
+#### Team Members:
 -   [Wenli Looi](https://github.com/looi)
 -   [Modan Han](https://github.com/shadowscat)
 -   [Andrew Heng](https://github.com/exspeed)
--   Jan Clarin
+-   [Jan Clarin](https://github.com/janclarin)
 
-##### About
+#### About
 Second Path is an Android application for prospective post-secondary students. It is a simple solution for determining how effective post-secondary education will be regarding your employability in the future. With accurate and recent statistics from Statistics Canada, Second Path visualizes average salaries, wages, and tuition fees for various different university programs across Canada. It also displays trends in salaries over the years to show how relevant the career will likely be in the future.
 
-##### References
+#### Libraries Used
+-   [MaterialTabs](https://github.com/neokree/MaterialTabs) for the tab bar.
+-   [HelloCharts for Android](https://github.com/lecho/hellocharts-android) for the graphs.
 
+#### References
 In addition to Canadian Open Data, we also used these career descriptions and images:
 -   https://commons.wikimedia.org/wiki/File:Nuvola_apps_edu_miscellaneous_%28no_words%29.svg
 -   https://commons.wikimedia.org/wiki/File:Crystal_Clear_app_kgoldrunner.png
