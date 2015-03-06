@@ -1,9 +1,12 @@
-###Canadian Open Data Experience Hackathon
-##### Wen Diesel Members:
--   Wenli Looi
+### Canadian Open Data Experience Hackathon
+##### Team Members:
+-   [Wenli Looi](https://github.com/looi)
+-   [Modan Han](https://github.com/shadowscat)
+-   [Andrew Heng](https://github.com/exspeed)
 -   Jan Clarin
--   Modan Han
--   Andrew Heng
+
+##### About
+Second Path is an Android application for prospective post-secondary students. It is a simple solution for determining how effective post-secondary education will be regarding your employability in the future. With accurate and recent statistics from Statistics Canada, Second Path visualizes average salaries, wages, and tuition fees for various different university programs across Canada. It also displays trends in salaries over the years to show how relevant the career will likely be in the future.
 
 ##### References
 
