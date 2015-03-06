@@ -1,5 +1,5 @@
 ## Second Path
-### [Canadian Open Data Experience](https://www.canadianopendataexperience.ca) 48-Hour Hackathon Application
+#### [Canadian Open Data Experience](https://www.canadianopendataexperience.ca) 48-Hour Hackathon Application
 #### Team Members:
 -   [Wenli Looi](https://github.com/looi)
 -   [Modan Han](https://github.com/shadowscat)
